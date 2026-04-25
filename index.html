@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brawl Stars Follow Alert</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: transparent; /* important for OBS */
+            margin: 0;
+            overflow: hidden;
+        }
+
+        #alert-container {
+            display: none;
+            text-align: center;
+            background-color: rgba(34, 34, 34, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%) scale(0.8);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        #alert-container.show {
+            display: block;
+            opacity: 1;
+            transform: translateX(-50%) scale(1);
+        }
+
+        #follower-name {
+            font-size: 26px;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        #rank-image {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="alert-container">
+    <div id="follower-name">Thank you!</div>
+    <img id="rank-image" src="" alt="Rank Image">
+</div>
+
+<script>
+    const ranks = [
+        'https://static.wikia.nocookie.net/brawlstars/images/5/5c/Battle_Card-Gold_2025.png/revision/latest?cb=20250228115808',
+        'https://static.wikia.nocookie.net/brawlstars/images/6/64/Battle_Card-Diamond_2025.png/revision/latest?cb=20250228115825',
+        'https://static.wikia.nocookie.net/brawlstars/images/0/03/Battle_Card-Mythic_2025.png/revision/latest?cb=20250228115846',
+        'https://static.wikia.nocookie.net/brawlstars/images/f/ff/Battle_Card-Legendary_2025.png/revision/latest?cb=20250228115905',
+        'https://static.wikia.nocookie.net/brawlstars/images/f/f5/Battle_Card-Masters_2025.png/revision/latest?cb=20250228115923',
+        'https://static.wikia.nocookie.net/brawlstars/images/7/75/Battle_Card-Pro_2025.png/revision/latest?cb=20250228115941'
+    ];
+
+    function showFollowAlert(name) {
+        const container = document.getElementById('alert-container');
+        const nameText = document.getElementById('follower-name');
+        const rankImage = document.getElementById('rank-image');
+
+        // Set name + random rank
+        nameText.innerText = `Thank you, ${name}!`;
+        rankImage.src = ranks[Math.floor(Math.random() * ranks.length)];
+
+        // Show with animation
+        container.classList.add('show');
+
+        // Hide after 5 seconds
+        setTimeout(() => {
+            container.classList.remove('show');
+        }, 5000);
+    }
+
+    // TEST (remove later)
+    setTimeout(() => {
+        showFollowAlert('PlayerOne');
+    }, 2000);
+</script>
+
+</body>
+</html>
