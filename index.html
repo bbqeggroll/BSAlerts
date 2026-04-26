@@ -7,37 +7,23 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: transparent; /* important for OBS */
-            margin: 0;
-            overflow: hidden;
+            background-color: #111;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
-
         #alert-container {
-            display: none;
             text-align: center;
-            background-color: rgba(34, 34, 34, 0.9);
+            background-color: #222;
             padding: 20px;
             border-radius: 10px;
-            position: absolute;
-            top: 20%;
-            left: 50%;
-            transform: translateX(-50%) scale(0.8);
-            opacity: 0;
-            transition: all 0.4s ease;
         }
-
-        #alert-container.show {
-            display: block;
-            opacity: 1;
-            transform: translateX(-50%) scale(1);
-        }
-
         #follower-name {
-            font-size: 26px;
+            font-size: 24px;
             margin-bottom: 10px;
-            color: #fff;
         }
-
         #rank-image {
             width: 100px;
             height: 100px;
@@ -45,45 +31,32 @@
     </style>
 </head>
 <body>
+    <div id="alert-container">
+        <span id="follower-name">Thank you, [Name]!</span>
+        <br>
+        <img id="rank-image" src="" alt="Rank Image">
+    </div>
+    <script>
+        // Example ranks - add your image URLs here
+        const ranks = [
+            'https://www.google.com/imgres?q=brawl%20stars%20melody%20fanart&imgurl=https%3A%2F%2Fpbs.twimg.com%2Fmedia%2FGQsIsy3WoAADh0q.jpg&imgrefurl=https%3A%2F%2Fx.com%2Fjosegoiabao%2Fstatus%2F1804545643312025616&docid=1FujlsGkjzM4WM&tbnid=YI8OydRhEYuqrM&vet=12ahUKEwi-qqHzoIqUAxVTm2oFHWnPI9MQnPAOegUIhwEQAQ..i&w=876&h=1024&hcb=2&ved=2ahUKEwi-qqHzoIqUAxVTm2oFHWnPI9MQnPAOegUIhwEQAQ',
+            'https://www.google.com/imgres?q=brawl%20stars%20janet%20fanart&imgurl=https%3A%2F%2Fi.redd.it%2F2u3csyxiawx81.jpg&imgrefurl=https%3A%2F%2Fwww.reddit.com%2Fr%2FBrawlstars%2Fcomments%2Fujtc91%2Fjanet_fanart_i_hope_you_like_it%2F&docid=Qs8F27mKwDk_pM&tbnid=r0XWsAUpOL5FYM&vet=12ahUKEwjMtpjMoYqUAxVGmSYFHXzjN9wQnPAOegQIFhAB..i&w=901&h=1350&hcb=2&ved=2ahUKEwjMtpjMoYqUAxVGmSYFHXzjN9wQnPAOegQIFhAB',
+            'https://www.google.com/imgres?q=brawl%20stars%20jessie%20fanart&imgurl=https%3A%2F%2Fi.redd.it%2Fqvbhla9svr391.jpg&imgrefurl=https%3A%2F%2Fwww.reddit.com%2Fr%2FBrawlstars%2Fcomments%2Fv59wik%2Fsummer_jessie_art%2F&docid=UR_Nv8EIXsUCbM&tbnid=5S02PuTfX9xpEM&vet=12ahUKEwjWhLPjoYqUAxUSmmoFHSUGHuMQnPAOegQIGxAB..i&w=1801&h=2264&hcb=2&ved=2ahUKEwjWhLPjoYqUAxUSmmoFHSUGHuMQnPAOegQIGxAB',
+            'https://x.com/Jonjorg121053/status/2045528117725294814',
+            'https://www.google.com/imgres?q=brawl%20stars%20allie%20fanart&imgurl=https%3A%2F%2Fpreview.redd.it%2Falli-fanart-by-v0-im90wfnpfgpf1.jpeg%3Fauto%3Dwebp%26s%3D08a5493e82303cc5f16a9d8195f07828124197c4&imgrefurl=https%3A%2F%2Fwww.reddit.com%2Fr%2FBrawlstars%2Fcomments%2F1ni7yeu%2Falli_fanart_by_jackohackz%2F&docid=LvwgcsOlk01fZM&tbnid=-WaEow5Nxq60JM&vet=12ahUKEwjr_PyQooqUAxUekmoFHazkLYoQnPAOegQIKhAB..i&w=968&h=745&hcb=2&ved=2ahUKEwjr_PyQooqUAxUekmoFHazkLYoQnPAOegQIKhAB'
+        ];
 
-<div id="alert-container">
-    <div id="follower-name">Thank you!</div>
-    <img id="rank-image" src="" alt="Rank Image">
-</div>
+        // Simulate a follow (in a real case, you'd get this from TikTok API or a webhook)
+        function simulateFollow(name) {
+            document.getElementById('follower-name').innerText = `Thank you, ${name}!`;
+            const randomRank = ranks[Math.floor(Math.random() * ranks.length)];
+            document.getElementById('rank-image').src = randomRank;
+        }
 
-<script>
-    const ranks = [
-        'https://static.wikia.nocookie.net/brawlstars/images/5/5c/Battle_Card-Gold_2025.png/revision/latest?cb=20250228115808',
-        'https://static.wikia.nocookie.net/brawlstars/images/6/64/Battle_Card-Diamond_2025.png/revision/latest?cb=20250228115825',
-        'https://static.wikia.nocookie.net/brawlstars/images/0/03/Battle_Card-Mythic_2025.png/revision/latest?cb=20250228115846',
-        'https://static.wikia.nocookie.net/brawlstars/images/f/ff/Battle_Card-Legendary_2025.png/revision/latest?cb=20250228115905',
-        'https://static.wikia.nocookie.net/brawlstars/images/f/f5/Battle_Card-Masters_2025.png/revision/latest?cb=20250228115923',
-        'https://static.wikia.nocookie.net/brawlstars/images/7/75/Battle_Card-Pro_2025.png/revision/latest?cb=20250228115941'
-    ];
-
-    function showFollowAlert(name) {
-        const container = document.getElementById('alert-container');
-        const nameText = document.getElementById('follower-name');
-        const rankImage = document.getElementById('rank-image');
-
-        // Set name + random rank
-        nameText.innerText = `Thank you, ${name}!`;
-        rankImage.src = ranks[Math.floor(Math.random() * ranks.length)];
-
-        // Show with animation
-        container.classList.add('show');
-
-        // Hide after 5 seconds
+        // For testing: simulate a follow after 2 seconds
         setTimeout(() => {
-            container.classList.remove('show');
-        }, 5000);
-    }
-
-    // TEST (remove later)
-    setTimeout(() => {
-        showFollowAlert('PlayerOne');
-    }, 2000);
-</script>
-
+            simulateFollow('PlayerOne');
+        }, 2000);
+    </script>
 </body>
 </html>
